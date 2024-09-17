@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="397070ff-e17a-453d-af16-695ab64d090d" name="更改" comment="by sye_rain">
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassSimpleMsger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/syewiki/atk/cli/ClassThreadAwake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/ClassThreadAwake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/syewiki/atk/cli/ClassMsger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/ClassMsger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdTabbedPaneBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdTabbedPaneBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +24,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {

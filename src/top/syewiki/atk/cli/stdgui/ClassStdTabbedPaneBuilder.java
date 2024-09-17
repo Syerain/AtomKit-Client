@@ -1,4 +1,5 @@
 package top.syewiki.atk.cli.stdgui;
+
 import top.syewiki.atk.cli.ClassThreadAwake;
 
 import javax.swing.*;
@@ -10,16 +11,16 @@ public class ClassStdTabbedPaneBuilder {
     private int sidebarHeight = 300; // Height for the sidebar
     public ClassThreadAwake threadAwake;
 
+    //构造方法中绑定唤醒线程
     public ClassStdTabbedPaneBuilder(ClassThreadAwake threadAwake){
         this.threadAwake = new ClassThreadAwake("syewiki.top",6001);
     }
 
+    //主绘制方法
     public void drawPane(ClassThreadAwake threadAwake) {
-
         this.threadAwake.start();
-
         SwingUtilities.invokeLater(() -> {
-            JFrame.setDefaultLookAndFeelDecorated(true);
+            JFrame.setDefaultLookAndFeelDecorated(false);
             JFrame frame = new JFrame("AtomKit-v1.0");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(600, 400);
@@ -92,7 +93,7 @@ public class ClassStdTabbedPaneBuilder {
         });
     }
 
-    // Method to create a content panel with a title bar and an empty panel
+    //创建空白的内容页
     private JPanel createContentPanel(String title) {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BorderLayout());
@@ -113,7 +114,7 @@ public class ClassStdTabbedPaneBuilder {
         return contentPanel;
     }
 
-    // Special method to create home panel with a bold title and content
+    //创建主页
     private JPanel createHomePanel() {
         JPanel homePanel = new JPanel();
         homePanel.setLayout(new BorderLayout());
@@ -170,29 +171,41 @@ public class ClassStdTabbedPaneBuilder {
         return homePanel;
     }
 
+    //创建唤醒页
     private JPanel createAwakePage(){
+        //唤醒页
         JPanel awakePanel = new JPanel();
         awakePanel.setLayout(new BorderLayout());
 
+        //页标题栏
         JPanel titleBar = new JPanel();
         titleBar.setBackground(Color.LIGHT_GRAY);
         titleBar.add(new JLabel("唤醒页"));
         awakePanel.add(titleBar,BorderLayout.NORTH);
 
-        JTextField opCodeTF = new JTextField(null,"请输入操作码(点击清空)",20);
+        //文字域：请输入操作码
+        JTextField opCodeTF = new JTextField(null,"请输入操作码(点击清空)",30);
         awakePanel.add(opCodeTF,BorderLayout.CENTER);
 
+        JTextField TextfieldResp = new JTextField(null,"服务端响应：(空)",15);
+        TextfieldResp.setForeground(Color.GRAY);
+        awakePanel.add(TextfieldResp,BorderLayout.SOUTH);
+
+        //发送按钮
         URL url = getClass().getResource("/top/syewiki/atk/gui/cli/techno.png");
         Icon imgTechno = new ImageIcon(url);
         JButton sendB = new JButton("发送",imgTechno);
         sendB.setToolTipText("发送操作码");
-        sendB.setBackground(Color.GRAY);
+        sendB.setBackground(new Color(112,128,144));
+        sendB.setForeground(Color.WHITE);
         awakePanel.add(sendB,BorderLayout.EAST);
 
+        //内容块
         JPanel contentArea = new JPanel();
         contentArea.setLayout(new BoxLayout(contentArea, BoxLayout.Y_AXIS));
         contentArea.setBackground(Color.WHITE);
 
+        //监听事件：单击发送按钮
         ActionListener buttonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -200,7 +213,9 @@ public class ClassStdTabbedPaneBuilder {
                 int echoValue = JOptionPane.showConfirmDialog(null,"确定要发送吗","WARNING",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null);
                 if (echoValue==JOptionPane.YES_OPTION){
                     String opCode = opCodeTF.getText();
-                    threadAwake.msger.sendMsg(opCode);
+                    threadAwake.msger.sendMsg(opCode,false);
+                    TextfieldResp.setText("服务端响应：\""+threadAwake.msger.rcvMsg(false)+"\"");
+
                 } else if (echoValue==JOptionPane.NO_OPTION) {
                 } else {
                 }
@@ -208,6 +223,7 @@ public class ClassStdTabbedPaneBuilder {
         };
         sendB.addActionListener(buttonListener);
 
+        //监听事件：单击输入域
         MouseListener mouseListener = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -230,6 +246,7 @@ public class ClassStdTabbedPaneBuilder {
         };
         opCodeTF.addMouseListener(mouseListener);
 
+        //监听事件：按下回车
         KeyListener keyListener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -240,7 +257,8 @@ public class ClassStdTabbedPaneBuilder {
                     int echoValue = JOptionPane.showConfirmDialog(null,"确定要发送吗","WARNING",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null);
                     if (echoValue==JOptionPane.YES_OPTION){
                         String opCode = opCodeTF.getText();
-                        threadAwake.msger.sendMsg(opCode);
+                        threadAwake.msger.sendMsg(opCode,false);
+                        TextfieldResp.setText("服务端响应：\""+threadAwake.msger.rcvMsg(false)+"\"");
                     } else if (echoValue==JOptionPane.NO_OPTION) {
                     } else {
                     }

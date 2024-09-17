@@ -44,38 +44,42 @@ public class ClassMsger {
     }
 
     //向服务端发信
-    public void sendMsg(String msgContent){
+    public void sendMsg(String msgContent, boolean ifCloseSocket){
         try {
             this.init();
             this.outstrm.write(msgContent.getBytes());
-            this.clientSocket.close();
+            if (ifCloseSocket == true) {
+                this.clientSocket.close();
+            }
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
     //从服务端收信
-    public String rcvMsg(){
+    public String rcvMsg(boolean ifInit){
         try {
-            this.init();
+            if (ifInit==true) {
+                this.init();
+            }else {
+                // byte[] iBuffer 作为缓冲区使用
+                byte[] iBuffer = new byte[1024];
 
-            // byte[] iBuffer 作为缓冲区使用
-            byte[] iBuffer = new byte[1024];
+                //读取来自服务端的输入流并赋予 String msgRcv
+                int bytesRead = this.instrm.read(iBuffer);
+                String msgRcv = new String(iBuffer, 0, bytesRead);
 
-            //读取来自服务端的输入流并赋予 String msgRcv
-            int bytesRead = this.instrm.read(iBuffer);
-            String msgRcv = new String(iBuffer,0,bytesRead);
+                this.clientSocket.close();
 
-            this.clientSocket.close();
-
-            //将来信结果返回
-            this.TempMsgRcv = msgRcv;
-            return msgRcv;
+                //将来信结果返回
+                this.TempMsgRcv = msgRcv;
+                return msgRcv;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        return "EXC_RCVMSG_ERROR";
+        return this.TempMsgRcv;
     }
 
     //获取历史发信
