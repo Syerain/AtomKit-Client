@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="397070ff-e17a-453d-af16-695ab64d090d" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/ClassGlobalConsts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/ClassMsger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/ClassThreadAwake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/gui/Temp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdFrameBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/kop/cli96/kopcli96.java" afterDir="false" />
+    <list default="true" id="397070ff-e17a-453d-af16-695ab64d090d" name="更改" comment="by sye_rain">
+      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/gui/cli/techno.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/syewiki/atk/cli/gui/Temp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdFrameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdFrameBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +59,15 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/yulin/IdeaProjects/AtomKit-Client/src/top/syewiki/atk/gui/cli",
     "应用程序.Main.executor": "Run"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/top/syewiki/atk/gui/cli" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -74,6 +77,19 @@
       <option name="presentableId" value="Default" />
       <updated>1726468605535</updated>
     </task>
+    <task id="LOCAL-00001" summary="by sye_rain">
+      <option name="closed" value="true" />
+      <created>1726513215686</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726513215686</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="by sye_rain" />
+    <option name="LAST_COMMIT_MESSAGE" value="by sye_rain" />
   </component>
 </project>
