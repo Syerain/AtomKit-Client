@@ -5,25 +5,12 @@ import top.syewiki.atk.cli.stdgui.*;
 
 public class Main {
     public static void main(String[] args) {
-        //System.out.println("Hello world!");
+        ClassGlobalConsts GlobalConsts = new ClassGlobalConsts("ATOM-Kit","atk","1.0","client-jdk21-commmon");
 
-        //ClassStdFrameBuilder fb = new ClassStdFrameBuilder();
-        //fb.drawUI();
+        ClassThreadAwake ThreadAwake = new ClassThreadAwake();
 
-        ClassStdTabbedPaneBuilder tp = new ClassStdTabbedPaneBuilder();
-        tp.drawPane();
-
-        //thrdFX thrdfx = new thrdFX();
-        //thrdfx.run();
-
+        ClassStdTabbedPaneBuilder tp = new ClassStdTabbedPaneBuilder(ThreadAwake);
+        tp.drawPane(ThreadAwake);
 
     }
 }
-
-/*class thrdFX extends Thread{
-    public void run() {
-        ClassStdFrameBuilderFX fx = new ClassStdFrameBuilderFX();
-        Stage stage = new Stage();
-        fx.start(stage);
-    }
-}*/

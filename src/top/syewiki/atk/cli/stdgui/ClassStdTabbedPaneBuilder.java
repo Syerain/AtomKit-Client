@@ -1,4 +1,6 @@
 package top.syewiki.atk.cli.stdgui;
+import top.syewiki.atk.cli.ClassThreadAwake;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -6,8 +8,16 @@ import java.net.URL;
 
 public class ClassStdTabbedPaneBuilder {
     private int sidebarHeight = 300; // Height for the sidebar
+    public ClassThreadAwake threadAwake = new ClassThreadAwake();
 
-    public void drawPane() {
+    public ClassStdTabbedPaneBuilder(ClassThreadAwake threadAwake){
+        this.threadAwake = threadAwake;
+    }
+
+    public void drawPane(ClassThreadAwake threadAwake) {
+
+        threadAwake.run();
+
         SwingUtilities.invokeLater(() -> {
             JFrame.setDefaultLookAndFeelDecorated(true);
             JFrame frame = new JFrame("AtomKit-v1.0");
@@ -190,7 +200,7 @@ public class ClassStdTabbedPaneBuilder {
                 int echoValue = JOptionPane.showConfirmDialog(null,"确定要发送吗","WARNING",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null);
                 if (echoValue==JOptionPane.YES_OPTION){
                     String opCode = opCodeTF.getText();
-                    System.out.println(opCode);
+                    threadAwake.msger.sendMsg(opCode);
                 } else if (echoValue==JOptionPane.NO_OPTION) {
                 } else {
                 }
@@ -230,7 +240,7 @@ public class ClassStdTabbedPaneBuilder {
                     int echoValue = JOptionPane.showConfirmDialog(null,"确定要发送吗","WARNING",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null);
                     if (echoValue==JOptionPane.YES_OPTION){
                         String opCode = opCodeTF.getText();
-                        System.out.println(opCode);
+                        threadAwake.msger.sendMsg(opCode);
                     } else if (echoValue==JOptionPane.NO_OPTION) {
                     } else {
                     }
