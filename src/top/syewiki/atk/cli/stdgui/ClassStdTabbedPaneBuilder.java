@@ -9,6 +9,7 @@ public class ClassStdTabbedPaneBuilder {
 
     public void drawPane() {
         SwingUtilities.invokeLater(() -> {
+            JFrame.setDefaultLookAndFeelDecorated(true);
             JFrame frame = new JFrame("AtomKit-v1.0");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(600, 400);
@@ -122,19 +123,39 @@ public class ClassStdTabbedPaneBuilder {
         welcomeLabel.setFont(welcomeLabel.getFont().deriveFont(Font.BOLD, 18)); // Bold font, size 18
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the text
 
+        JPanel text = new JPanel(new GridLayout(0, 1));
+        text.add(welcomeLabel);
+        text.add(new JLabel("到左侧栏唤醒页输入操作码"));
+        text.add(new JLabel("甲辰龙年 癸酉月 甲申日"));
+        text.add(new JLabel("中秋节快乐!!!"));
+        text.setBackground(Color.WHITE);
+
+        /*
         // Normal content "Content"
-        JLabel contentLabel = new JLabel("到左侧栏唤醒页输入操作码");
-        contentLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the text
+        JLabel contentLabel = new JLabel("<html><body><p align=\"center\">到左侧栏唤醒页输入操作码<br/>甲辰龙年 癸酉月 甲申日<br/>中秋节快乐!!!</p></body></html>");
+        contentLabel.setAlignmentX(Component.LEFT_ALIGNMENT); // Center the text
+        */
 
         // Add components to the content area
+        /*
         contentArea.add(Box.createVerticalStrut(20)); // Add space at the top
         contentArea.add(welcomeLabel);
         contentArea.add(Box.createVerticalStrut(10)); // Add space between title and content
+
         contentArea.add(contentLabel);
+        */
+
+        URL url = getClass().getResource("/top/syewiki/atk/gui/cli/moonCake.png");
+        Icon moonCakeImage = new ImageIcon(url);
+        JLabel moonCake = new JLabel(moonCakeImage);
+        moonCake.setOpaque(true);
+        moonCake.setBackground(Color.WHITE);
 
         // Add the title bar and content area to the home panel
         homePanel.add(titleBar, BorderLayout.NORTH);
         homePanel.add(contentArea, BorderLayout.CENTER);
+        homePanel.add(moonCake, BorderLayout.SOUTH);
+        homePanel.add(text,BorderLayout.CENTER);
 
         return homePanel;
     }
@@ -148,7 +169,7 @@ public class ClassStdTabbedPaneBuilder {
         titleBar.add(new JLabel("唤醒页"));
         awakePanel.add(titleBar,BorderLayout.NORTH);
 
-        JTextField opCodeTF = new JTextField(null,"请输入操作码",20);
+        JTextField opCodeTF = new JTextField(null,"请输入操作码(点击清空)",20);
         awakePanel.add(opCodeTF,BorderLayout.CENTER);
 
         URL url = getClass().getResource("/top/syewiki/atk/gui/cli/techno.png");
@@ -165,9 +186,14 @@ public class ClassStdTabbedPaneBuilder {
         ActionListener buttonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String opCode = opCodeTF.getText();
                 opCodeTF.requestFocus();
-                System.out.println(opCode);
+                int echoValue = JOptionPane.showConfirmDialog(null,"确定要发送吗","WARNING",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null);
+                if (echoValue==JOptionPane.YES_OPTION){
+                    String opCode = opCodeTF.getText();
+                    System.out.println(opCode);
+                } else if (echoValue==JOptionPane.NO_OPTION) {
+                } else {
+                }
             }
         };
         sendB.addActionListener(buttonListener);
@@ -201,8 +227,13 @@ public class ClassStdTabbedPaneBuilder {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode()==KeyEvent.VK_ENTER){
-                    String opCode = opCodeTF.getText();
-                    System.out.println(opCode);
+                    int echoValue = JOptionPane.showConfirmDialog(null,"确定要发送吗","WARNING",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null);
+                    if (echoValue==JOptionPane.YES_OPTION){
+                        String opCode = opCodeTF.getText();
+                        System.out.println(opCode);
+                    } else if (echoValue==JOptionPane.NO_OPTION) {
+                    } else {
+                    }
                 }
             }
             @Override
