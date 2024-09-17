@@ -18,6 +18,7 @@ public class ClassStdFrameBuilder{
         //Frame
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame();
+        frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //button
