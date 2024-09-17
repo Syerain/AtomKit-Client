@@ -1,18 +1,19 @@
 package top.syewiki.atk.cli.stdgui;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.event.*;
+import java.net.URL;
 
 public class ClassStdTabbedPaneBuilder {
     private int sidebarHeight = 300; // Height for the sidebar
 
     public void drawPane() {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Tabbed Pane Example");
+            JFrame frame = new JFrame("AtomKit-v1.0");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(600, 400);
             frame.setLayout(new BorderLayout());
+            frame.setLocationRelativeTo(null);
 
             // Create the panel for the left column with GridBagLayout
             JPanel leftPanel = new JPanel();
@@ -28,36 +29,36 @@ public class ClassStdTabbedPaneBuilder {
             rightPanel.setLayout(cardLayout);
 
             // Create buttons for the left panel
-            JButton khomeButton = new JButton("khome");
-            JButton kaboutButton = new JButton("kabout");
-            JButton ksettingsButton = new JButton("ksettings");
+            JButton khomeButton = new JButton("主页");
+            JButton kawakeButton = new JButton("唤醒页");
+            JButton ksettingsButton = new JButton("设置");
 
             // Set preferred size to buttons to achieve 9:5 aspect ratio
             Dimension buttonSize = new Dimension(180, 100); // Width: 180, Height: 100 (9:5 ratio)
             khomeButton.setPreferredSize(buttonSize);
-            kaboutButton.setPreferredSize(buttonSize);
+            kawakeButton.setPreferredSize(buttonSize);
             ksettingsButton.setPreferredSize(buttonSize);
 
             // Create content panels for each button with title bar and empty panel
             JPanel homePanel = createHomePanel(); // Special method for home panel
-            JPanel aboutPanel = createContentPanel("About Page");
-            JPanel settingsPanel = createContentPanel("Settings Page");
+            JPanel awakePanel = createAwakePage();
+            JPanel settingsPanel = createContentPanel("设置");
 
             // Add content panels to the right panel
             rightPanel.add(homePanel, "HOME");
-            rightPanel.add(aboutPanel, "ABOUT");
+            rightPanel.add(awakePanel, "AWAKE");
             rightPanel.add(settingsPanel, "SETTINGS");
 
             // Add action listeners to buttons
             khomeButton.addActionListener(e -> cardLayout.show(rightPanel, "HOME"));
-            kaboutButton.addActionListener(e -> cardLayout.show(rightPanel, "ABOUT"));
+            kawakeButton.addActionListener(e -> cardLayout.show(rightPanel, "AWAKE"));
             ksettingsButton.addActionListener(e -> cardLayout.show(rightPanel, "SETTINGS"));
 
             // Add buttons to the left panel with GridBagConstraints
             gbc.gridy = 0;
             leftPanel.add(khomeButton, gbc);
             gbc.gridy = 1;
-            leftPanel.add(kaboutButton, gbc);
+            leftPanel.add(kawakeButton, gbc);
             gbc.gridy = 2;
             leftPanel.add(ksettingsButton, gbc);
 
@@ -109,7 +110,7 @@ public class ClassStdTabbedPaneBuilder {
         // Create the title bar panel
         JPanel titleBar = new JPanel();
         titleBar.setBackground(Color.LIGHT_GRAY);
-        titleBar.add(new JLabel("Home Page"));
+        titleBar.add(new JLabel("主页"));
 
         // Create the content area panel with bold title and text
         JPanel contentArea = new JPanel();
@@ -117,12 +118,12 @@ public class ClassStdTabbedPaneBuilder {
         contentArea.setBackground(Color.WHITE);
 
         // Bold title "Welcome to ATOM"
-        JLabel welcomeLabel = new JLabel("Welcome to ATOM");
+        JLabel welcomeLabel = new JLabel("欢迎来到ATOM");
         welcomeLabel.setFont(welcomeLabel.getFont().deriveFont(Font.BOLD, 18)); // Bold font, size 18
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the text
 
         // Normal content "Content"
-        JLabel contentLabel = new JLabel("Content");
+        JLabel contentLabel = new JLabel("到左侧栏唤醒页输入操作码");
         contentLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the text
 
         // Add components to the content area
@@ -137,4 +138,82 @@ public class ClassStdTabbedPaneBuilder {
 
         return homePanel;
     }
+
+    private JPanel createAwakePage(){
+        JPanel awakePanel = new JPanel();
+        awakePanel.setLayout(new BorderLayout());
+
+        JPanel titleBar = new JPanel();
+        titleBar.setBackground(Color.LIGHT_GRAY);
+        titleBar.add(new JLabel("唤醒页"));
+        awakePanel.add(titleBar,BorderLayout.NORTH);
+
+        JTextField opCodeTF = new JTextField(null,"请输入操作码",20);
+        awakePanel.add(opCodeTF,BorderLayout.CENTER);
+
+        URL url = getClass().getResource("/top/syewiki/atk/gui/cli/techno.png");
+        Icon imgTechno = new ImageIcon(url);
+        JButton sendB = new JButton("发送",imgTechno);
+        sendB.setToolTipText("发送操作码");
+        sendB.setBackground(Color.GRAY);
+        awakePanel.add(sendB,BorderLayout.EAST);
+
+        JPanel contentArea = new JPanel();
+        contentArea.setLayout(new BoxLayout(contentArea, BoxLayout.Y_AXIS));
+        contentArea.setBackground(Color.WHITE);
+
+        ActionListener buttonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String opCode = opCodeTF.getText();
+                opCodeTF.requestFocus();
+                System.out.println(opCode);
+            }
+        };
+        sendB.addActionListener(buttonListener);
+
+        MouseListener mouseListener = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getButton()==MouseEvent.BUTTON1){
+                    opCodeTF.setText("");
+                }
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        };
+        opCodeTF.addMouseListener(mouseListener);
+
+        KeyListener keyListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode()==KeyEvent.VK_ENTER){
+                    String opCode = opCodeTF.getText();
+                    System.out.println(opCode);
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+        opCodeTF.addKeyListener(keyListener);
+
+        return awakePanel;
+    }
 }
+
+
+

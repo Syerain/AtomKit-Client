@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="397070ff-e17a-453d-af16-695ab64d090d" name="更改" comment="by sye_rain">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdFrameBuilderFX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdTabbedPaneBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATOM Kit - Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ATOM Kit - Client.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdFrameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdFrameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdFrameBuilderFX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdTabbedPaneBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/syewiki/atk/cli/stdgui/ClassStdTabbedPaneBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +32,12 @@
     &quot;assignee&quot;: &quot;Syerain&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Syerain/AtomKit-Client.git&quot;,
-    &quot;accountId&quot;: &quot;6f0decbd-fdcc-42f8-9da8-ab69dc205bc9&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Syerain/AtomKit-Client",
+    "accountId": "eacf6e9c-6353-4e6e-9543-ddab2f3ffeed"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -56,21 +52,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/yulin/IdeaProjects/AtomKit-Client/src/top/syewiki/atk/gui/cli",
-    "project.structure.last.edited": "全局库",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "应用程序.Main.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yulin/IdeaProjects/AtomKit-Client/src/top/syewiki/atk/gui/cli&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;全局库&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/top/syewiki/atk/gui/cli" />
