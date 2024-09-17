@@ -10,8 +10,12 @@ public class ClassThreadAwake extends Thread{
         this.msger = new ClassMsger(hostAddr,hostPort);
     }
 
-    public void run(String hostAddr, int hostPort) {
-        this.initThread(hostAddr,hostPort);
-        this.msger.rcvMsg();
+    public void run() {
+        this.initThread(this.hostAddr,this.hostPort);
+    }
+
+    public ClassThreadAwake(String hostAddr, int hostPort){
+        this.hostAddr = hostAddr;
+        this.hostPort = hostPort;
     }
 }

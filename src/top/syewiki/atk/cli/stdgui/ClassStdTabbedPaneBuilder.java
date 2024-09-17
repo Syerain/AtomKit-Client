@@ -8,15 +8,15 @@ import java.net.URL;
 
 public class ClassStdTabbedPaneBuilder {
     private int sidebarHeight = 300; // Height for the sidebar
-    public ClassThreadAwake threadAwake = new ClassThreadAwake();
+    public ClassThreadAwake threadAwake;
 
     public ClassStdTabbedPaneBuilder(ClassThreadAwake threadAwake){
-        this.threadAwake = threadAwake;
+        this.threadAwake = new ClassThreadAwake("syewiki.top",6001);
     }
 
     public void drawPane(ClassThreadAwake threadAwake) {
 
-        threadAwake.run();
+        this.threadAwake.start();
 
         SwingUtilities.invokeLater(() -> {
             JFrame.setDefaultLookAndFeelDecorated(true);
