@@ -1,6 +1,7 @@
 package top.syewiki.atk.cli.stdgui;
 
 import top.syewiki.atk.cli.ClassThreadAwake;
+import top.syewiki.atk.cli.ClassThreadCheck;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,16 +11,26 @@ import java.net.URL;
 public class ClassStdTabbedPaneBuilder {
     private int sidebarHeight = 300; // Height for the sidebar
     public ClassThreadAwake threadAwake;
+    //public ClassThreadCheck threadCheck;
 
     //构造方法中绑定唤醒线程
-    public ClassStdTabbedPaneBuilder(ClassThreadAwake threadAwake){
+    public ClassStdTabbedPaneBuilder(ClassThreadAwake threadAwake/*ClassThreadCheck threadCheck*/){
         this.threadAwake = new ClassThreadAwake("syewiki.top",6001);
+        //this.threadCheck = new ClassThreadCheck("syewiki.top",6001);
     }
 
     //主绘制方法
-    public void drawPane(ClassThreadAwake threadAwake) {
-        this.threadAwake.start();
+    public void drawPane(ClassThreadAwake threadAwake /*ClassThreadCheck threadCheck*/) {
+
+        ClassThreadCheck threadCheck = new ClassThreadCheck("syewiki.top",6001);
+
+        threadCheck.start();
+
+        threadAwake.start();
+
+
         SwingUtilities.invokeLater(() -> {
+
             JFrame.setDefaultLookAndFeelDecorated(false);
             JFrame frame = new JFrame("AtomKit-v1.0");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,6 +56,7 @@ public class ClassStdTabbedPaneBuilder {
             JButton kawakeButton = new JButton("唤醒页");
             JButton ksettingsButton = new JButton("设置");
 
+
             // Set preferred size to buttons to achieve 9:5 aspect ratio
             Dimension buttonSize = new Dimension(180, 100); // Width: 180, Height: 100 (9:5 ratio)
             khomeButton.setPreferredSize(buttonSize);
@@ -53,7 +65,7 @@ public class ClassStdTabbedPaneBuilder {
 
             // Create content panels for each button with title bar and empty panel
             JPanel homePanel = createHomePanel(); // Special method for home panel
-            JPanel awakePanel = createAwakePage();
+            JPanel awakePanel = createAwakePage(threadAwake);
             JPanel settingsPanel = createContentPanel("设置");
 
             // Add content panels to the right panel
@@ -89,6 +101,14 @@ public class ClassStdTabbedPaneBuilder {
                 }
             });
 
+            //thrdChk
+            if (threadCheck.ifSrvReachable == 1){
+                int i = JOptionPane.showConfirmDialog(null,"已连接至syewiki.top:6001","成功连接至服务器",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null);
+
+            }else if (threadCheck.ifSrvReachable == 2){
+                int i = JOptionPane.showConfirmDialog(null,"无法连接至syewiki.top:6001","无法连接至服务器",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null);
+            }
+
             frame.setVisible(true);
         });
     }
@@ -116,6 +136,7 @@ public class ClassStdTabbedPaneBuilder {
 
     //创建主页
     private JPanel createHomePanel() {
+
         JPanel homePanel = new JPanel();
         homePanel.setLayout(new BorderLayout());
 
@@ -172,7 +193,7 @@ public class ClassStdTabbedPaneBuilder {
     }
 
     //创建唤醒页
-    private JPanel createAwakePage(){
+    private JPanel createAwakePage(ClassThreadAwake threadAwake){
         //唤醒页
         JPanel awakePanel = new JPanel();
         awakePanel.setLayout(new BorderLayout());
