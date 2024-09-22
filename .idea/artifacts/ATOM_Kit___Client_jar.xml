@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ATOM Kit - Client:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ATOM_Kit___Client_jar</output-path>
+    <root id="archive" name="ATOM Kit - Client.jar">
+      <element id="module-output" name="ATOM Kit - Client" />
+      <element id="library" level="project" name="lib" />
+    </root>
+  </artifact>
+</component>

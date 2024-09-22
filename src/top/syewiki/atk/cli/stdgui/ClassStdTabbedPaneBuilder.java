@@ -1,5 +1,6 @@
 package top.syewiki.atk.cli.stdgui;
 
+import top.syewiki.atk.cli.ClassGlobalConsts;
 import top.syewiki.atk.cli.ClassThreadAwake;
 import top.syewiki.atk.cli.ClassThreadCheck;
 
@@ -22,6 +23,8 @@ public class ClassStdTabbedPaneBuilder {
     //主绘制方法
     public void drawPane(ClassThreadAwake threadAwake /*ClassThreadCheck threadCheck*/) {
 
+        ClassGlobalConsts GlobalConsts = new ClassGlobalConsts("ATOM Kit - Client -1.1.2","AtomKit","1.1.2","client-jdk21-common");
+
         ClassThreadCheck threadCheck = new ClassThreadCheck("syewiki.top",6001);
 
         threadCheck.start();
@@ -32,7 +35,7 @@ public class ClassStdTabbedPaneBuilder {
         SwingUtilities.invokeLater(() -> {
 
             JFrame.setDefaultLookAndFeelDecorated(false);
-            JFrame frame = new JFrame("AtomKit-v1.0");
+            JFrame frame = new JFrame(GlobalConsts.getFullTitle());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(600, 400);
             frame.setLayout(new BorderLayout());

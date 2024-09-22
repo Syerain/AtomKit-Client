@@ -1,9 +1,10 @@
 package top.syewiki.atk.cli;
 
 public class ClassGlobalConsts {
-    public static String fullTitle = "ATOM-Kit";
-    public static String semiTitle = "atk";
-    public static String cliver = "0.97";
+    public static String fullTitle = "ATOM Kit - Client - 1.1.2";
+    public static String semiTitle = "AtomKit";
+    public static String minititle = "atk";
+    public static String cliver = "1.1.2";
     public static String edition = "client-jdk21-common";
 
     public String getFullTitle(){
